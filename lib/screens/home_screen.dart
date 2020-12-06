@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
-import 'package:rokaru/screens/shop_screen.dart';
+import 'package:rokaru/screens/store_screen.dart';
 import 'package:rokaru/utils/color_palette.dart';
 import 'package:rokaru/widgets/bars.dart';
 import 'package:rokaru/widgets/cards.dart';
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 TopBar(icon: 'bell'),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed(ShopScreen.id),
+                  onTap: () => Navigator.of(context).pushNamed(StoreScreen.id),
                   child: Container(
                     padding: EdgeInsets.all(12.0),
                     margin: EdgeInsets.all(24.0),

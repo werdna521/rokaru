@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rokaru/screens/home_screen.dart';
-import 'package:rokaru/screens/shop_screen.dart';
+import 'package:rokaru/screens/store_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +24,7 @@ class App extends StatelessWidget {
       initialRoute: HomeScreen.id,
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
-        ShopScreen.id: (context) => ShopScreen(),
+        StoreScreen.id: (context) => StoreScreen(),
       },
     );
   }
