@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rokaru/screens/home_screen.dart';
+import 'package:rokaru/screens/product_screen.dart';
+import 'package:rokaru/screens/shopping_detail_screen.dart';
 import 'package:rokaru/screens/store_screen.dart';
+import 'package:rokaru/screens/take_away_ticket_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +28,9 @@ class App extends StatelessWidget {
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
         StoreScreen.id: (context) => StoreScreen(),
+        ProductScreen.id: (context) => ProductScreen(),
+        ShoppingDetail.id: (context) => ShoppingDetail(),
+        TakeAwayTicketScreen.id: (context) => TakeAwayTicketScreen(),
       },
     );
   }
