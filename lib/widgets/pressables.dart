@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rokaru/utils/color_palette.dart';
 
 class RaisedIconButton extends StatelessWidget {
   final String icon;
@@ -62,6 +63,69 @@ class PressableIcon extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(padding),
             child: SvgPicture.asset('assets/img/$icon.svg'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Button extends StatelessWidget {
+  final String text;
+  final String icon;
+  final VoidCallback onTap;
+
+  Button({this.text, this.icon, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: ColorPalette.gray, width: 1.0),
+        borderRadius: BorderRadius.circular(24.0),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xff000000).withOpacity(.08),
+            offset: Offset(2.0, 4.0),
+            blurRadius: 10.0,
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(24.0),
+          onTap: onTap,
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 28.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        text,
+                        style: TextStyle(
+                          color: ColorPalette.dark,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  child: SvgPicture.asset('assets/img/$icon.svg'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
