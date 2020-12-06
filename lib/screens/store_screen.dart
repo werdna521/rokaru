@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rokaru/screens/product_screen.dart';
 import 'package:rokaru/utils/color_palette.dart';
 import 'package:rokaru/widgets/bars.dart';
 import 'package:rokaru/widgets/pressables.dart';
@@ -206,13 +207,17 @@ class StoreDisplayWindow extends StatelessWidget {
                   left: index == 0 ? 24.0 : 0.0,
                   right: index == 4 ? 24.0 : 0.0,
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: Image.asset(
-                    'assets/img/geprek.jpg',
-                    width: 136.0,
-                    height: 105.0,
-                    fit: BoxFit.cover,
+                child: GestureDetector(
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(ProductScreen.id),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      'assets/img/geprek.jpg',
+                      width: 136.0,
+                      height: 105.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               );
@@ -258,13 +263,17 @@ class ProductList extends StatelessWidget {
                     left: index == 0 ? 24.0 : 0.0,
                     right: index == 1 ? 24.0 : 0.0,
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      'assets/img/geprek.jpg',
-                      fit: BoxFit.cover,
-                      width: MediaQuery.of(context).size.width * 4 / 11,
-                      height: MediaQuery.of(context).size.width * 4 / 11,
+                  child: GestureDetector(
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(ProductScreen.id),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        'assets/img/geprek.jpg',
+                        fit: BoxFit.cover,
+                        width: MediaQuery.of(context).size.width * 4 / 11,
+                        height: MediaQuery.of(context).size.width * 4 / 11,
+                      ),
                     ),
                   ),
                 );

@@ -6,4 +6,6 @@ class ColorPalette {
   static final Color shadow = Color(0xff6f97b2);
   static final Color dark = Color(0xff4b6b7d);
   static final Color gray = Color(0xffe8e8e8);
+  static final Color green = Color(0xff6cc164);
+  static final Color orange = Color(0xffe4b65c);
 }

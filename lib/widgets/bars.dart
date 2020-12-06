@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rokaru/widgets/brands.dart';
 import 'package:rokaru/widgets/pressables.dart';
 
 class TopBar extends StatelessWidget {
@@ -18,10 +18,7 @@ class TopBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(
-                  'assets/img/rokaru.svg',
-                  width: 1 / 4 * MediaQuery.of(context).size.width,
-                ),
+                Rokaru(),
               ],
             ),
           ),
