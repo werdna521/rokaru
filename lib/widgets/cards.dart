@@ -1,46 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rokaru/screens/store_screen.dart';
 import 'package:rokaru/utils/color_palette.dart';
 
 class SwipingCard extends StatelessWidget {
+  final String image;
+  final String name;
+  final String distance;
+
+  SwipingCard({this.image, this.name, this.distance});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/img/geprek.jpg'),
-          fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pushNamed(StoreScreen.id),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/img/$image.jpg'),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: BorderRadius.circular(20.0),
         ),
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Ayam Geprek Expert',
-            style: TextStyle(
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.bold,
-              fontSize: 24.0,
-              color: Colors.white,
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              name,
+              style: TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                fontSize: 24.0,
+                color: Colors.white,
+              ),
             ),
-          ),
-          SvgPicture.asset(
-            'assets/img/five-star.svg',
-            width: MediaQuery.of(context).size.width * .3,
-          ),
-          Text(
-            '200m',
-            style: TextStyle(
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.bold,
-              fontSize: 14.0,
-              color: Colors.white,
+            SvgPicture.asset(
+              'assets/img/five-star.svg',
+              width: MediaQuery.of(context).size.width * .3,
             ),
-          ),
-        ],
+            Text(
+              distance,
+              style: TextStyle(
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.bold,
+                fontSize: 14.0,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -52,6 +62,7 @@ class SummaryCard extends StatelessWidget {
   final List<String> details;
   final String price;
   final String image;
+  final String mime;
 
   SummaryCard({
     this.title,
@@ -59,6 +70,7 @@ class SummaryCard extends StatelessWidget {
     this.details,
     this.price,
     this.image,
+    this.mime = 'png',
   });
 
   List<Text> _renderDetails() {
@@ -99,7 +111,7 @@ class SummaryCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(15.0),
             child: Image.asset(
-              image != null ? 'assets/img/$image.png' : 'assets/img/geprek.jpg',
+              'assets/img/$image.$mime',
               fit: BoxFit.cover,
               width: 56.0,
               height: 56.0,
@@ -170,6 +182,7 @@ class TakeAwayTicket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width - 56.0,
       padding: EdgeInsets.all(24.0),
       decoration: BoxDecoration(
         color: ColorPalette.orange,
@@ -183,6 +196,7 @@ class TakeAwayTicket extends StatelessWidget {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
@@ -213,16 +227,18 @@ class TakeAwayTicket extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16.0),
-          Container(
-            padding: EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Image.asset(
-              'assets/img/qr.png',
-              width: 150.0,
-              height: 150.0,
+          Center(
+            child: Container(
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Image.asset(
+                'assets/img/qr.png',
+                width: 150.0,
+                height: 150.0,
+              ),
             ),
           ),
         ],

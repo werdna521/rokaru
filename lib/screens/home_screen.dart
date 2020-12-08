@@ -85,7 +85,50 @@ class HomeScreen extends StatelessWidget {
                     minWidth: MediaQuery.of(context).size.width * 0.8,
                     minHeight: MediaQuery.of(context).size.height - 420,
                     cardBuilder: (context, index) {
-                      return SwipingCard();
+                      switch (index) {
+                        case 0:
+                          return SwipingCard(
+                            image: 'kelontong',
+                            name: 'Toko Mister Sam',
+                            distance: '50m',
+                          );
+                        case 1:
+                          return SwipingCard(
+                            image: 'pisang',
+                            name: 'Pisang Goreng Siau Lang',
+                            distance: '100m',
+                          );
+                        case 2:
+                          return SwipingCard(
+                            image: 'kepui',
+                            name: 'Nasi Ayam Bu Nur',
+                            distance: '125m',
+                          );
+                        case 3:
+                          return SwipingCard(
+                            image: 'kelontong2',
+                            name: 'Toko Sakiman',
+                            distance: '150m',
+                          );
+                        case 4:
+                          return SwipingCard(
+                            image: 'warteg',
+                            name: 'Warteg Sempurna',
+                            distance: '150m',
+                          );
+                        case 5:
+                          return SwipingCard(
+                            image: 'book',
+                            name: 'Toko Buku Sur',
+                            distance: '200m',
+                          );
+                        default:
+                          return SwipingCard(
+                            image: 'geprek',
+                            name: 'Ayam Geprek Kak Mey',
+                            distance: '200m',
+                          );
+                      }
                     },
                     totalNum: 50,
                     cardController: _cardController = CardController(),

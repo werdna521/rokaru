@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rokaru/controllers/map_controller.dart';
 import 'package:rokaru/screens/product_screen.dart';
 import 'package:rokaru/utils/color_palette.dart';
 import 'package:rokaru/widgets/bars.dart';
@@ -40,6 +41,8 @@ class StoreScreen extends StatelessWidget {
 }
 
 class StoreInfo extends StatelessWidget {
+  final MapController _mapController = new MapController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,8 +54,9 @@ class StoreInfo extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: Image.asset(
-                'assets/img/geprek.jpg',
+                'assets/img/mey.jpg',
                 width: MediaQuery.of(context).size.width - 32.0,
+                fit: BoxFit.contain,
               ),
             ),
           ),
@@ -60,7 +64,7 @@ class StoreInfo extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Text(
-              'Ayam Geprek Expert',
+              'Ayam Geprek Kak Mey',
               style: TextStyle(
                 color: ColorPalette.dark,
                 fontFamily: 'Quicksand',
@@ -156,7 +160,11 @@ class StoreInfo extends StatelessWidget {
                 Button(
                   text: 'Arahkan',
                   icon: 'direction',
-                  onTap: () => print('ok'),
+                  onTap: () => _mapController.openMap(
+                    3.6107636,
+                    98.6490592,
+                    'Ayam Geprek Kak Mey',
+                  ),
                 ),
                 Button(
                   text: 'Telepon',
@@ -178,6 +186,8 @@ class StoreInfo extends StatelessWidget {
 }
 
 class StoreDisplayWindow extends StatelessWidget {
+  final List<String> displays = ['geprek', 'geprek-cheese', 'tempe', 'tahu'];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -200,12 +210,12 @@ class StoreDisplayWindow extends StatelessWidget {
           child: ListView.separated(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: displays.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.only(
                   left: index == 0 ? 24.0 : 0.0,
-                  right: index == 4 ? 24.0 : 0.0,
+                  right: index == displays.length - 1 ? 24.0 : 0.0,
                 ),
                 child: GestureDetector(
                   onTap: () =>
@@ -213,7 +223,7 @@ class StoreDisplayWindow extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
                     child: Image.asset(
-                      'assets/img/geprek.jpg',
+                      'assets/img/${displays[index]}.jpg',
                       width: 136.0,
                       height: 105.0,
                       fit: BoxFit.cover,
@@ -233,6 +243,16 @@ class StoreDisplayWindow extends StatelessWidget {
 }
 
 class ProductList extends StatelessWidget {
+  final List<String> products = [
+    'geprek',
+    'geprek-cheese',
+    'tempe',
+    'tahu',
+    'sambal',
+    'nasi',
+    'teh',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -253,15 +273,15 @@ class ProductList extends StatelessWidget {
         ListView.separated(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          itemCount: 5,
+          itemCount: 4,
           itemBuilder: (context, index) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(2, (index) {
+              children: List.generate(index == 3 ? 1 : 2, (i) {
                 return Padding(
                   padding: EdgeInsets.only(
-                    left: index == 0 ? 24.0 : 0.0,
-                    right: index == 1 ? 24.0 : 0.0,
+                    left: i == 0 ? 24.0 : 0.0,
+                    right: i == 1 ? 24.0 : 0.0,
                   ),
                   child: GestureDetector(
                     onTap: () =>
@@ -269,7 +289,7 @@ class ProductList extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.asset(
-                        'assets/img/geprek.jpg',
+                        'assets/img/${products[index * 2 + i]}.jpg',
                         fit: BoxFit.cover,
                         width: MediaQuery.of(context).size.width * 4 / 11,
                         height: MediaQuery.of(context).size.width * 4 / 11,

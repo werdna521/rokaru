@@ -33,7 +33,7 @@ class ShoppingDetail extends StatelessWidget {
                           child: Rokartle(
                             icon: 'bag-blur',
                             title: 'Daftar Belanja',
-                            subtitle: 'Belanja dari Ayam Geprek Expert',
+                            subtitle: 'Belanja dari Ayam Geprek Kak Mey',
                           ),
                         ),
                         SizedBox(height: 32.0),
@@ -49,20 +49,14 @@ class ShoppingDetail extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 8.0),
-                        ListView.separated(
-                          physics: ClampingScrollPhysics(),
+                        Padding(
                           padding: EdgeInsets.symmetric(horizontal: 24.0),
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return SummaryCard(
-                              title: index == 0 ? 'Ayam Geprek' : 'Geprek Keju',
-                              price: index == 0 ? 'Rp25.000 x1' : 'Rp29.000 x1',
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(height: 8.0);
-                          },
-                          itemCount: 2,
+                          child: SummaryCard(
+                            title: 'Ayam Geprek Cheese',
+                            price: 'Rp33.000',
+                            image: 'geprek-cheese',
+                            mime: 'jpg',
+                          ),
                         ),
                         SizedBox(height: 8.0),
                         Align(
@@ -70,7 +64,7 @@ class ShoppingDetail extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 24.0),
                             child: Text(
-                              'Subtotal: Rp54.000',
+                              'Subtotal: Rp33.000',
                               style: TextStyle(
                                 fontFamily: 'Inter',
                                 fontSize: 13.0,
@@ -95,15 +89,9 @@ class ShoppingDetail extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 24.0),
                           child: SummaryCard(
-                            title: 'Gojek Instan',
-                            subtitle: 'Rumah Saya',
-                            details: [
-                              'Jl. Jalan Jalanan No. 323',
-                              'Budi Hartono',
-                              '0855-6548-6585',
-                            ],
-                            price: 'Rp5.000',
-                            image: 'gojek-instan',
+                            title: 'Ambil di Tempat',
+                            image: 'mey',
+                            mime: 'jpg',
                           ),
                         ),
                         SizedBox(height: 24.0),
@@ -140,7 +128,7 @@ class ShoppingDetail extends StatelessWidget {
                         children: [
                           Expanded(
                             child: TransactionButton(
-                              text: 'BAYAR (RP59.000)',
+                              text: 'BAYAR (RP33.000)',
                               onTap: () =>
                                   Navigator.of(context).pushNamedAndRemoveUntil(
                                 TakeAwayTicketScreen.id,
